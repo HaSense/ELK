@@ -1,0 +1,32 @@
+# Python 프로그램을 이용한 CPU 정보삽입
+# mysql에서 사용할 DB 선택
+use iot_db;
+#테이블이 존재하면 테이블 삭제
+drop table cpu_sensing;
+#mysql에 데이터가 들어올 테이블 작성
+create table cpu_sensing (
+	id integer primary key auto_increment primary key,    #elasticsearch의 _id 필드가 된다
+    ptime datetime default current_timestamp,             #시간을 primary key로 잡아도 된다
+	cpu_percent float4,
+    cpu_speed float4,
+    process_cnt int,
+    mem_used float4
+);
+#만들어진 테이블 저장
+commit;
+#테스트 삽입쿼리 - id는 auto_increment이기 때문에 적어주지 않았지만 삽입된다. 
+insert into cpu_sensing (ptime, cpu_percent, cpu_speed, process_cnt, mem_used)
+values (now(), 15.4, 1800.2, 300, 30);
+
+#삽입된 데이터 확인
+select * from cpu_sensing order by ptime desc;
+#전체 데이터 개수 확인
+select count(*) from cpu_sensing;
+#테이블 구조확인
+desc cpu_sensing;
+#CPU사용률 컬럼만 확인
+select cpu_percent from cpu_sensing;
+#현재시간 mysql에서 확인
+select now() from dual;
+#mysql 버전
+select version();
