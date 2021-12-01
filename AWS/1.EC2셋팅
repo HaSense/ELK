@@ -40,6 +40,9 @@
    $> sudo apt install default-jdk 
 
 7. elasticsearch 설치
+
+    설치문서 --> https://www.elastic.co/guide/en/elasticsearch/reference/7.15/deb.html#deb-repo
+
    $> sudo apt install elasticsearch 
 
 8. kibana 설치
