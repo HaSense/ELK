@@ -46,6 +46,7 @@
    $> sudo apt install elasticsearch 
 
 8. kibana 설치
+
    $> sudo apt install kibana
 
 9. 
